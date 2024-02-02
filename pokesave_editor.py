@@ -4,11 +4,14 @@ if __name__ == "__main__":
     with open(sys.argv[1], "rb+") as f:
         sav = bytearray(f.read()) # This variable is an array containing each bytes of your save file. If you want to modify the byte at address 0x42DE to the value 0x83 for example you can simply use sav[0x42DE] = 0x83 (just like a normal array :-))
         # Write some code here
-        i = 0
-        while ((8 + i) != 14):
-            sav[0x2590 + 8 + i] =  0xff
-            i = i + 1
-        
+        sav[0x2598] = 0x83
+        sav[0x2599] = 0x83
+        sav[0x259A] = 0x82
+        sav[0x259B] = 0x86
+        sav[0x259C] = 0x87
+        sav[0x259D] = 0x88
+        sav[0x259E] = 0x89
+
         checksum = 0xff
         for i in sav[0x2598:0x3523]:
             checksum -= i
